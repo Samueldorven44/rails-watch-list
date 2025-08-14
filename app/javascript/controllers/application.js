@@ -1,4 +1,7 @@
 import { Application } from "@hotwired/stimulus"
+import "@popperjs/core";
+import "bootstrap";
+
 
 const application = Application.start()
 
