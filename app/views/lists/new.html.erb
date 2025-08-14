@@ -1,0 +1,9 @@
+<h2>Ajouter une nouvelle liste</h2>
+
+<%= form_with model: @list do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "⬅ Retour à la liste", lists_path, class:"btn btn-primary"%>
