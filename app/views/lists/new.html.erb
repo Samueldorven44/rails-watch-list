@@ -1,9 +1,9 @@
 <h2>Ajouter une nouvelle liste</h2>
 
-<%= form_with model: @list do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
 <% end %>
 
 <%= link_to "⬅ Retour à la liste", lists_path, class:"btn btn-primary"%>
