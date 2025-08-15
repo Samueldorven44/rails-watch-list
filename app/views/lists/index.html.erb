@@ -1,27 +1,33 @@
-<div class="banner" style="background-image: url('<%= asset_path("monster_cie.jpg") %>')">
+<div class="banner" style="background-image: url('<%= asset_path("camera.jpg") %>')">
   <div class="banner-text">
-    <h1>Watch List</h1>
+    <h1>Watch List<span id="point">.</span></h1>
     <p>Listez vos film préféré sur un seul et même site</p>
   </div>
 </div>
 
 <div class="index-container">
-  <h2 id="subtitle-cards-lists">All your lists</h2>
+  <h2 id="subtitle-cards">All your lists</h2>
 
-  <div class="cards-lists">
-    <ul>
-      <% @lists.each do |list| %>
-        <li>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class: "link" do %>
+        <article class="card">
           <% if list.photo.attached? && list.photo.key.present? %>
-            <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill, alt: list.name, class: "list-image" %>
+            <%= cl_image_tag list.photo.key,
+                  height: 180, width: 400, crop: :fill,
+                  alt: list.name, class: "image" %>
+          <% else %>
+            <div class="image placeholder"></div>
           <% end %>
 
-          <%= link_to list.name, list_path(list), class: "list-name" %>
-        </li>
+          <h3><%= list.name %></h3>
+        </article>
       <% end %>
-    </ul>
+    <% end %>
   </div>
 </div>
 
-<%= link_to "+ Ajouter une liste", new_list_path, class:"btn btn-primary"%>
+
+
+<div class="btn-wrapper"><%= link_to "Ajouter une liste", new_list_path, class:"btn-list"%></div>
 </div>

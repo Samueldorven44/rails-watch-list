@@ -1,9 +1,12 @@
-<h2>Ajouter une nouvelle liste</h2>
+<div class="new-container">
+  <div class="form">
+    <h2>Ajouter une nouvelle liste</h2>
 
-<%= simple_form_for @list do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
-<% end %>
-
-<%= link_to "⬅ Retour à la liste", lists_path, class:"btn btn-primary"%>
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit, "Enregistrer", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <div class="btn-wrapper"><%= link_to "Retour", lists_path, class:"btn-list"%></div>
+</div>

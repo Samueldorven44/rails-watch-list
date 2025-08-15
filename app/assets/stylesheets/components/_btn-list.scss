@@ -1,0 +1,22 @@
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-list {
+  display: inline-block;
+  margin: 15px auto;
+  text-decoration: none;
+  color: white;
+  margin: 15px 0px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #F9C22E;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-list:hover {
+  background: #d7a417;
+  color: white;
+}

@@ -4,16 +4,25 @@
   </div>
 </div>
 
-<% @list.bookmarks.each do |bookmark|%>
-  <p>
-    Film: <%= bookmark.movie.title %><br>
-    Commentaire <%= bookmark.comment %>
-  </p>
-  <%= link_to "Delete",
-    list_bookmark_path(@list, bookmark),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-    class: "btn btn-danger"
-  %>
-<% end %>
+<div class="show-container">
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+
+      <article class="card">
+        <div class="image placeholder"></div>
+
+        Film: <%= bookmark.movie.title %><br>
+        Commentaire <%= bookmark.comment %>
+
+        <%= link_to "Delete",
+          list_bookmark_path(@list, bookmark),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: "btn btn-danger"
+        %>
+      </article>
+    <% end %>
+  </div>
+</div>
+
 <%= link_to "Ajouter un bookmark", new_list_bookmark_path(@list), class:"btn btn-success" %>
-<%= link_to "⬅ Retour à la liste", lists_path, class:"btn btn-primary"%>
+<div class="btn-wrapper"><%= link_to "Retour", lists_path, class:"btn-list"%></div>
