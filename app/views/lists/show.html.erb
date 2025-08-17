@@ -1,28 +1,47 @@
-<div class="banner" style="background-image: url('<%= url_for(@list.photo)%>')">
+<div class="banner" style="background-image: url('<%= url_for(@list.photo) if @list.photo.attached? %>')">
   <div class="banner-text">
     <h1><%= @list.name %></h1>
   </div>
 </div>
 
+<div class="actions-bar">
+  <div class="btn-bookmark">
+    <%= link_to "Ajouter un bookmark", new_list_bookmark_path(@list), class: "btn-add-bookmark" %>
+  </div>
+  <div class="delete-list">
+    <%= link_to "Delete",
+        list_path(@list),
+        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "link-delete-list" %>
+  </div>
+</div>
+
 <div class="show-container">
-  <div class="cards">
+  <div class="cards-bookmark">
     <% @list.bookmarks.each do |bookmark| %>
+      <article class="card-bookmark">
+        <% if bookmark.photo.attached? && bookmark.photo.key.present? %>
+          <%= cl_image_tag bookmark.photo.key,
+                height: 180, width: 400, crop: :fill,
+                class: "image" %>
+        <% else %>
+          <div class="image placeholder"></div>
+        <% end %>
 
-      <article class="card">
-        <div class="image placeholder"></div>
+        <h3><%= bookmark.movie.title %></h3>
+        <p><%= bookmark.comment %></p>
 
-        Film: <%= bookmark.movie.title %><br>
-        Commentaire <%= bookmark.comment %>
-
-        <%= link_to "Delete",
-          list_bookmark_path(@list, bookmark),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-          class: "btn btn-danger"
-        %>
+        <div class="link-card-bookmark">
+          <%= link_to "Delete",
+              list_bookmark_path(@list, bookmark),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "btn-card-bookmark" %>
+        </div>
       </article>
     <% end %>
   </div>
 </div>
 
-<%= link_to "Ajouter un bookmark", new_list_bookmark_path(@list), class:"btn btn-success" %>
-<div class="btn-wrapper"><%= link_to "Retour", lists_path, class:"btn-list"%></div>
+<div class="btn-wrapper">
+  <%= link_to "Retour", lists_path, class: "btn-list" %>
+</div>

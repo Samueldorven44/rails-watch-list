@@ -1,0 +1,22 @@
+.btn-add-bookmark {
+  display: inline-block;
+  margin-top: 15px auto;
+  text-decoration: none;
+  color: white;
+  margin: 15px 0px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #00d265;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-add-bookmark:hover {
+  background: #009749;
+  color: white;
+}
+
+.btn-bookmark {
+  float: right;
+  margin-left: 10px; /* espace entre les deux */
+}

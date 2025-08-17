@@ -1,0 +1,72 @@
+.cards-bookmark {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Carte */
+.card-bookmark {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link:hover .card-bookmark {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenu */
+
+.card-bookmark h3 {
+  margin: 15px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card-bookmark p {
+  margin: 0px 15px 15px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Optionnel: placeholder si pas d'image */
+.image.placeholder {
+  background: #f3f3f3;
+  display: block;
+}
+
+/* Button delete */
+.link-card-bookmark{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-card-bookmark{
+  display: inline-block;
+  margin: 15px auto;
+  text-decoration: none;
+  color: white;
+  margin: 15px 0px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #d61515;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-card-bookmark:hover{
+  background: #980707;
+  color: white;
+}
